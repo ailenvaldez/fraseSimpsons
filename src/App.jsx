@@ -14,7 +14,8 @@ function App() {
   }, []);
 
   const consultarAPI = async () => {
-    //mostrar el spinner
+    try{
+      //mostrar el spinner
     setMostrarSpinner(true);
     //hacer una peticion get a la api
     const respuesta = await fetch(
@@ -25,6 +26,10 @@ function App() {
     setPersonaje(datos[0]);
     //ocultar spinner
     setMostrarSpinner(false);
+    }catch (error){
+      console.log(error);
+      //agregar un msj para el usuario final "espere un momento c sweetalert"
+    }
   };
 
   const mostrarComponente = mostrarSpinner ? (<div className="my-4">
